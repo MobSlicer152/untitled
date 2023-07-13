@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "untitled",
+  "version": "${version}",
+  "name": "untitled",
+  "description": "",
+  "authors": [],
+  "contact": {
+    "repo": "https://github.com/MobSlicer152/untitled"
+  },
+  "license": "All-Rights-Reserved",
+  "icon": "assets/untitled/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "ca.randomcode.untitled.client.UntitledClient"
+    ],
+    "main": [
+      "ca.randomcode.untitled.Untitled"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.14.17",
+    "fabric": "*",
+    "minecraft": "1.20.1"
+  },
+  "mixins": [
+    "untitled.mixins.json"
+  ],
+  "accessWidener": "untitled.accesswidener"
+}

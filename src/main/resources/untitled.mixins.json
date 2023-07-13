@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "ca.randomcode.untitled.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "server.commands.data.EntityDataAccessorMixin"
+  ],
+  "client": [
+    "client.LogoRendererMixin",
+    "client.model.HumanoidModelMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
