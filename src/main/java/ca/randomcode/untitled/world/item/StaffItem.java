@@ -27,7 +27,7 @@ public abstract class StaffItem extends Item implements FabricItem {
         Vec3 direction = user.getLookAngle().normalize();
 
         return fire(level, user, stack, direction, (double)(stack.getMaxDamage() - stack.getDamageValue()) / stack.getMaxDamage()) ?
-                InteractionResultHolder.success(stack) :
+                InteractionResultHolder.pass(stack) :
                     InteractionResultHolder.fail(stack);
     }
 

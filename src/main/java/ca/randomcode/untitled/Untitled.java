@@ -30,7 +30,7 @@ public class Untitled implements ModInitializer {
     public static final Item FARADAY_SUIT = registerItem(new ArmorItem(FARADAY_MATERIAL, ArmorItem.Type.CHESTPLATE,
             new Item.Properties().durability(50).rarity(Rarity.UNCOMMON)), "faraday_suit");
 
-    public static final CreativeModeTab MOD_TAB = CreativeModeTab.builder(CreativeModeTab.Row.BOTTOM, 6)
+    public static final CreativeModeTab MOD_TAB = FabricItemGroup.builder()
             .title(Component.translatable("itemGroup.untitled"))
             .icon(() -> {
                 return new ItemStack(FIRE_STAFF);
