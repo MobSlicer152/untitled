@@ -52,12 +52,12 @@ public class Untitled implements ModInitializer {
     }
 
     static Item registerItem(Item item, String name) {
-        logger.debug("Registering {} {}", item.getClass(), name);
+        //logger.debug("Registering {} {}", item.getClass(), name);
         return (Item)Registry.register(BuiltInRegistries.ITEM, new ResourceLocation(MOD_ID, name), item);
     }
 
     static MobEffect registerEffect(MobEffect effect, String name, int id) {
-        logger.debug("Registering {} {}", effect.getClass(), name);
+        //logger.debug("Registering {} {}", effect.getClass(), name);
         return (MobEffect)Registry.registerMapping(BuiltInRegistries.MOB_EFFECT, id | 0x6900, name, effect);
     }
 }
