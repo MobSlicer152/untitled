@@ -11,7 +11,9 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.player.PlayerModelPart;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Overwrite;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(LivingEntityRenderer.class)
 public class LivingEntityRendererMixin <T extends LivingEntity, M extends EntityModel<T>> extends EntityRenderer<T> implements RenderLayerParent<T, M> {
@@ -30,16 +32,17 @@ public class LivingEntityRendererMixin <T extends LivingEntity, M extends Entity
     /**
      * @author
      * @reason
-     *
-    @Overwrite
-    public static boolean isEntityUpsideDown(LivingEntity livingEntity) {
+     */
+    @Inject(method = "isEntityUpsideDown", at = @At("HEAD"), cancellable = true)
+    private static void isEntityUpsideDown(LivingEntity livingEntity, CallbackInfoReturnable<Boolean> cir) {
         if (livingEntity instanceof Player || livingEntity.hasCustomName()) {
             String string = ChatFormatting.stripFormatting(livingEntity.getName().getString());
-            if ("Dinnerbone".equals(string) || "Grumm".equals(string) || "MobSlicer".equals(string)) {
-                return !(livingEntity instanceof Player) || ((Player)livingEntity).isModelPartShown(PlayerModelPart.CAPE);
+            if ("Dinnerbone".equals(string) || "Grumm".equals(string) ||
+                    (livingEntity instanceof Player && ("MobSlicer".equals(string) || string.contains("Player")))) {
+                cir.setReturnValue(!(livingEntity instanceof Player) || ((Player)livingEntity).isModelPartShown(PlayerModelPart.CAPE));
             }
         }
 
-        return false;
-    }*/
+        cir.setReturnValue(false);
+    }
 }

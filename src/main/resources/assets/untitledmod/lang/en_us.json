@@ -1,3 +1,6 @@
 {
-  "item.untitledmod.fire_staff": "Fire Staff"
+  "item.untitled.fire_staff": "Fire Staff",
+  "item.untitled.faraday_suit": "Faraday Suit",
+
+  "itemGroup.untitled": "Fun Mod"
 }
